@@ -4,21 +4,17 @@ import { NavbarStyle } from './style';
 const NavBar = () => {
   const [navbarButtonClass, setNavbarButtonClass] = useState('');
   const [navbarReverseButtonClass, setNavbarReverseButtonClass] = useState('');
-  const dropRef = useRef(null);
+
   return (
     <NavbarStyle>
       <div className='navbars d-flex'>
         <Button
           onMouseEnter={() => {
-            if (dropRef.current && !navbarButtonClass) {
+            if (!navbarButtonClass) {
               setNavbarButtonClass('hoverClass');
               setNavbarReverseButtonClass('');
             }
-            if (
-              dropRef.current &&
-              !navbarReverseButtonClass &&
-              navbarButtonClass
-            ) {
+            if (!navbarReverseButtonClass && navbarButtonClass) {
               setNavbarReverseButtonClass('reverseHoverClass');
               setNavbarButtonClass('');
             }
@@ -27,7 +23,6 @@ const NavBar = () => {
           className={` Navbutton ${navbarButtonClass && navbarButtonClass} ${
             navbarReverseButtonClass && navbarReverseButtonClass
           }`}
-          ref={dropRef}
         >
           daridram
         </Button>
