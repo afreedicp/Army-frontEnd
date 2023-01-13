@@ -25,7 +25,11 @@ const Home = () => {
         ) : (
           <>
             <div className='loader'>ss</div>
+<<<<<<< HEAD
             <button></button>
+=======
+            <button> enter your name</button>
+>>>>>>> 085e294 (created a button to enter your name)
           </>
         )}
       </div>
