@@ -1,17 +1,34 @@
 import { useEffect, useState } from 'react';
-import logo from '../../logo.svg';
+import Typewriter from 'typewriter-effect';
 import { HomeApi } from '../Api';
 import { HomePageStyle } from './styles';
 const Home = () => {
-  const [value, setVaslue] = useState();
+  const [value, setValue] = useState('');
+  const [callagain, setcallagain] = useState(false);
   useEffect(() => {
     HomeApi((data) => {
-      setVaslue(data.massage);
+      setValue(value + data.massage);
+      console.log(value);
     });
-  }, []);
+  }, [callagain]);
   return (
     <HomePageStyle>
-      <div>{value ? <div>{value}</div> : <div className='loader'></div>}</div>
+      <div>
+        {value ? (
+          <div
+            onClick={() => {
+              setcallagain(!callagain);
+            }}
+          >
+            <Components value={value} />
+          </div>
+        ) : (
+          <>
+            <div className='loader'>ss</div>
+            <button></button>
+          </>
+        )}
+      </div>
     </HomePageStyle>
   );
 };
