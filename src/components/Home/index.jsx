@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Typewriter from 'typewriter-effect';
 import { HomeApi } from '../Api';
 import { HomePageStyle } from './styles';
 const Home = () => {
@@ -20,11 +19,11 @@ const Home = () => {
               setcallagain(!callagain);
             }}
           >
-            <Components value={value} />
+            {/* <Components value={value} /> */}
           </div>
         ) : (
           <>
-            <div className='loader'>ss</div>
+            <div className='loader'></div>
             <button></button>
             <button> enter your name</button>
           </>
