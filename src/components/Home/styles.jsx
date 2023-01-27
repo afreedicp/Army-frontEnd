@@ -17,7 +17,7 @@ export const HomePageStyle = styled.div`
   }
   .loader {
     position: fixed;
-    top: 50%;
+    bottom: 10%;
     left: 45%;
     border: 16px solid #f3f3f300;
     border-top: 16px solid #3498db;
@@ -26,5 +26,8 @@ export const HomePageStyle = styled.div`
     width: 120px;
     height: 120px;
     animation: spin 2s linear infinite;
+  }
+  .row {
+    color: #fff;
   }
 `;

@@ -1,33 +1,33 @@
-import { useEffect, useState } from 'react';
-import { HomeApi } from '../Api';
 import { HomePageStyle } from './styles';
+import { useEffect, useState } from 'react';
+
+import { HomeApi } from '../Api';
+import CreateThoughts from '../CreateThoughts';
 const Home = () => {
-  const [value, setValue] = useState('');
-  const [callagain, setcallagain] = useState(false);
+  const [value, setValues] = useState();
+  const [modalOpen, setModalOpen] = useState(false);
   useEffect(() => {
     HomeApi((data) => {
-      setValue(value + data.massage);
-      console.log(value);
+      setValues(data);
     });
-  }, [callagain]);
+  }, [value]);
   return (
     <HomePageStyle>
       <div>
-        {value ? (
+        <div className='valueeeee'>
+          {value?.map((item) => {
+            return <ol className='row'>{item.text}</ol>;
+          })}
+        </div>
+        <div className='loaderclass position-fixed w-100'>
           <div
+            className='loader'
             onClick={() => {
-              setcallagain(!callagain);
+              setModalOpen(true);
             }}
-          >
-            {/* <Components value={value} /> */}
-          </div>
-        ) : (
-          <>
-            <div className='loader'></div>
-            <button></button>
-            <button> enter your name</button>
-          </>
-        )}
+          ></div>
+        </div>
+        {modalOpen && <CreateThoughts open={'true'} />}
       </div>
     </HomePageStyle>
   );
