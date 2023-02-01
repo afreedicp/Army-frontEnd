@@ -1,22 +1,31 @@
 import { HomePageStyle } from './styles';
 import { useEffect, useState } from 'react';
-
-import { HomeApi } from '../Api';
+import { useDispatch, useSelector } from 'react-redux';
+import { getStories, selectAllstory } from '../../store/Story/storySlice';
 import CreateThoughts from '../CreateThoughts';
 const Home = () => {
-  const [value, setValues] = useState();
   const [modalOpen, setModalOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const story = useSelector(selectAllstory);
+  console.log(story);
   useEffect(() => {
-    HomeApi((data) => {
-      setValues(data);
-    });
-  }, [value]);
+    dispatch(getStories());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <HomePageStyle>
       <div>
         <div className='valueeeee'>
-          {value?.map((item) => {
-            return <ol className='row'>{item.text}</ol>;
+          {story?.map((item) => {
+            return (
+              <>
+                <div className='row'>
+                  <div className='title'>{item.Title.title}</div>
+                  <div className='description'>{item.text}</div>
+                </div>
+              </>
+            );
           })}
         </div>
         <div className='loaderclass position-fixed w-100'>
@@ -27,7 +36,9 @@ const Home = () => {
             }}
           ></div>
         </div>
-        {modalOpen && <CreateThoughts open={'true'} />}
+        {modalOpen && (
+          <CreateThoughts open={modalOpen} closeModal={setModalOpen} />
+        )}
       </div>
     </HomePageStyle>
   );

@@ -1,20 +1,23 @@
-import { addStory } from '../Api';
 import { CreateThoughtsStyle } from './styles';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { createStory } from '../../store/Story/storySlice';
 import Modal from '../Modal';
-const CreateThoughts = (open) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+const CreateThoughts = ({ open, closeModal }) => {
+  const dispatch = useDispatch();
+  const { register, handleSubmit, reset } = useForm();
 
-  const onSubmit = (data) => {
-    addStory(data, (res) => {
-      reset();
-    });
-  };
+  const onSubmit = (data) =>
+    dispatch(
+      createStory({
+        data,
+        successCB: () => {
+          console.log('hi');
+          closeModal(false);
+          reset();
+        },
+      })
+    );
   return (
     <div>
       <CreateThoughtsStyle>

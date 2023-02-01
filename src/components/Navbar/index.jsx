@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { NavbarStyle } from './style';
 const NavBar = () => {
   const [navbarButtonClass, setNavbarButtonClass] = useState('');

@@ -1,19 +1,13 @@
 import axios from './axios';
-let config = {
-  headers: {
-    forNest: 'forNest',
-  },
-};
-const HomeApi = (successCB) => {
+
+const HomeApi = () => {
   return axios.get('/story').then((res) => {
-    successCB(res.data);
     return res.data;
   });
 };
-const addStory = (data, successCB) => {
+const addStory = (data) => {
   return axios.post('/story/addStory', data).then((res) => {
-    successCB(res.data);
-    return res.data;
+    return res;
   });
 };
 const deleteStory = (successCB) => {
