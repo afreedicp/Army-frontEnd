@@ -7,7 +7,7 @@ const NavBar = () => {
 
   return (
     <NavbarStyle>
-      <div className='navbars d-flex'>
+      <div className='navbarStyle d-flex'>
         <Button
           onMouseEnter={() => {
             if (!navbarButtonClass) {

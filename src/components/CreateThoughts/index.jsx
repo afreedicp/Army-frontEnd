@@ -12,7 +12,6 @@ const CreateThoughts = ({ open, closeModal }) => {
       createStory({
         data,
         successCB: () => {
-          console.log('hi');
           closeModal(false);
           reset();
         },

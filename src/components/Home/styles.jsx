@@ -27,7 +27,7 @@ export const HomePageStyle = styled.div`
     height: 120px;
     animation: spin 2s linear infinite;
   }
-  .valueeeee {
+  .valueContainer {
     display: flex;
     flex-wrap: wrap;
     row-gap: 10px;
@@ -48,24 +48,27 @@ export const HomePageStyle = styled.div`
       background: #e6e9f0;
     }
   }
-  .row {
+  .styledModal {
+    padding: 10px;
+  }
+  .rowClass {
     border: 1px dashed #5fa16d;
-    padding: 10px 25px 20px 25px;
-    width: 140px;
-    height: 40px;
+    width: 220px;
+    padding: 10px 15px;
+    height: 70px;
     font-size: 20px;
     text-transform: capitalize;
     color: #5fa16d;
   }
   .title {
     color: #5f88a1;
-    max-width: 100px;
+    max-width: 200px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
   .description {
-    max-width: 100px;
+    max-width: 200px;
     overflow: hidden;
     display: inline-block;
     white-space: nowrap;

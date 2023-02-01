@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 export const NavbarStyle = styled.div`
-  .navbars {
+  .navbarStyle {
     position: sticky;
     top: 30px;
     max-width: 100vw;

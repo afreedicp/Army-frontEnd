@@ -34,9 +34,9 @@ export const StyledModal = styled.div`
     left: 30%;
     width: 620px;
     top: 20%;
+    background: rgba(69, 11, 37, 0.7);
     border-radius: 12px;
-    height: 51%;
-    background: #fff;
+    height: 55%;
     transition: all 0.3s ease-in-out;
     padding: 24px 20px;
     z-index: 3;
