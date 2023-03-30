@@ -15,9 +15,8 @@ const addStory = (data) => {
     return res;
   });
 };
-const deleteStory = (successCB) => {
-  return axios.delete('/story/:id').then((res) => {
-    successCB(res.data);
+const deleteStory = (id) => {
+  return axios.delete(`/story/deleteStory/${id}`).then((res) => {
     return res;
   });
 };

@@ -1,5 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { addStory, HomeApi, getStory, updateStory } from '../../components/Api';
+import {
+  addStory,
+  HomeApi,
+  getStory,
+  updateStory,
+  deleteStory,
+} from '../../components/Api';
 
 const initialState = {
   status: 'idle',
@@ -36,6 +42,14 @@ export const getAStory = createAsyncThunk(
     return response.data;
   }
 );
+export const deleteAStory = createAsyncThunk(
+  'story/deleteAStory',
+  async ({ id, successCB }) => {
+    const response = await deleteStory(id);
+    successCB(response.data);
+    return response.data;
+  }
+);
 
 export const getStories = createAsyncThunk('story/getStories', async () => {
   const response = await HomeApi();
@@ -49,6 +63,12 @@ const storySlice = createSlice({
     updateStatus: (state) => {
       state.status = 'idle';
       state.isLoading = false;
+    },
+    removeItem: (state, payload) => {
+      console.log(payload, state);
+      if (state.stories) {
+        state.stories.splice(payload.payload.index, 1);
+      }
     },
   },
   extraReducers(builder) {
@@ -102,11 +122,23 @@ const storySlice = createSlice({
           (item) => item.id === action.payload.id
         );
         state.stories[index] = action.payload;
+      })
+      .addCase(deleteAStory.rejected, (state, action) => {
+        state.status = 'failed';
+      })
+      .addCase(deleteAStory.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(deleteAStory.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        const index = state.stories.findIndex(
+          (item) => item.id === action.payload.id
+        );
       });
   },
 });
 
-export const { updateStatus } = storySlice.actions;
+export const { updateStatus, removeItem } = storySlice.actions;
 
 export default storySlice.reducer;
 

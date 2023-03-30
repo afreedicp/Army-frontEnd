@@ -57,6 +57,7 @@ export const HomePageStyle = styled.div`
     padding: 10px 15px;
     height: 70px;
     font-size: 20px;
+    position: relative;
     text-transform: capitalize;
     color: #5fa16d;
   }
@@ -74,5 +75,15 @@ export const HomePageStyle = styled.div`
     white-space: nowrap;
     text-overflow: ellipsis;
     color: #5fa16d;
+  }
+  .toileticon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    :hover {
+      filter: invert(19%) sepia(100%) saturate(2567%) hue-rotate(356deg)
+        brightness(92%) contrast(89%);
+      cursor: help;
+    }
   }
 `;
